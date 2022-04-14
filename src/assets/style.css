@@ -1,0 +1,16 @@
+:root {
+    --bg-dark:radial-gradient(ellipse, #303030 0%, #161312 
+    100%);
+
+    --bg-light:radial-gradient(ellipse, #dfdfdf 0%, #7b7b7b 100%);
+
+    --font-white:#FFFFFF;
+
+    --letter-correct:#2AA800;
+
+    --bgpanel-guessed-letter:#720303;
+
+    --incorrect-letter:#B70000;
+
+    --gap-panel:black;
+}

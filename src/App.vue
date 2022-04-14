@@ -1,5 +1,5 @@
 <script setup>
-import PanelLetters from './components/PanelLetters.vue';
+ import Logo from './components/Logo.vue'
 </script>
 
 <script>
@@ -7,8 +7,9 @@ import PanelLetters from './components/PanelLetters.vue';
 export default {
   data() {
     return {
-      guessedLetters: ['a', 't', 'r'],
-      movie: "Star Wars"
+
+       toggle: true
+      
     }
   }
 }
@@ -18,71 +19,71 @@ export default {
 </script>
 
 <template>
-  <h1>Cine de Barrio</h1>
-  <main>
-    <panel-letters :text="movie" :guessedLetters="guessedLetters" />
+  <main :class="[toggle ? 'bg-light' : 'bg-dark']">
+  <div class="icons">
+  <nav>
+    <Logo class="logo"></Logo>
+  <img class="dark animate__animated animate__rubberBand"  @click = "toggle = !toggle" v-if  = "toggle" src="../public/svg/toggle_on_black_48dp.svg" 
+  alt="toggle-dark">
+  <img class="light  animate__animated animate__rubberBand " @click = "toggle = !toggle" v-else src="../public/svg/toggle_off_white_48dp.svg" 
+  alt="toggle-light">
+  </nav>
+  </div>
+  <div>
+  <div class="slider-movie"><h1>SLIDER MOVIE</h1></div>
+  </div>
+  <div>
+    <div class="panel--letter"></div>
+  </div>
+  
   </main>
 </template>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-@import './assets/base.css';
+/* @import './assets/style.css'; */
+:root {
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+    --font-white:#FFFFFF;
 
-  font-weight: normal;
+    --letter-correct:#2AA800;
+
+    --bgpanel-guessed-letter:#720303;
+
+    --incorrect-letter:#B70000;
+
+    --gap-panel:black;
 }
 
-header {
-  line-height: 1.5;
+main {
+  width: auto;
+  height: 100vh;
 }
+.bg-light {
 
+background:radial-gradient(ellipse, #dfdfdf 0%, #7b7b7b 100%);;
+
+}
+.bg-dark {
+
+  background:radial-gradient(ellipse, #303030 0%, #161312 
+    100%);
+}
+.icons{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  
+}
+.logo, .slider-movie {
+  
+}
+.slider-movie {
+  margin:20px;
+}
 .logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    flex-direction: column;
-  }
-
-  #app {
-
-    padding: 0 2rem;
-  }
-
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+  float: left;
+  margin: 20px;
+  width: 80px;
 }
 </style>

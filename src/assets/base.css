@@ -34,6 +34,20 @@
   --color-text: var(--vt-c-text-light-1);
 
   --section-gap: 160px;
+
+  --bg-dark: radial-gradient(ellipse, #303030 0%, #161312 100%);
+
+  --bg-light: var(radial-gradient(ellipse, #b35454 0%, #7b7b7b 100%));
+
+  --font-white: var(#FFFFFF);
+
+  --letter-correct: var(#2AA800);
+
+  --bgpanel-guessed-letter: var(#720303);
+
+  --incorrect-letter: var(#B70000);
+
+  --gap-panel: var(black);
 }
 
 @media (prefers-color-scheme: dark) {
