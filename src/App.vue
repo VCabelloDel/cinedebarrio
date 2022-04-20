@@ -2,6 +2,7 @@
 import PanelLetters from "./components/PanelLetters.vue";
 import keyboard from "./components/Keyboard.vue";
 import Slider from "./components/Slider.vue";
+import KeyboardEvents from "./components/Keyboard-events.vue"
 </script>
 
 <script>
@@ -33,6 +34,7 @@ export default {
       });
     });
   },
+
   computed: {
     lettersControl() {
       return this.letterArray;
@@ -49,24 +51,36 @@ export default {
           clickedLetter.status = "correct";
         } else {
           clickedLetter.status = "wrong";
-          this.arrayMovie.push(movies.pop());
+          if (movies.length > 0) {
+            this.arrayMovie.push(movies.pop());
+          }
+          else {
+            return
+          }
         }
         this.guessedLetters.push(clickedLetter.letter);
       }
     },
+    letterPressed(e) {
+      if ((e.keyCode < 65 || e.keyCode > 90) && e.keyCode != 192) {
+        return;
+      }
+      let keyPressed = e.key;
+      this.letterClicked(keyPressed);
+
+    }
   },
+
 };
 </script>
 
 <template>
   <main>
+    <KeyboardEvents @keyup="letterPressed"></KeyboardEvents>
     <h1>Cine de Barrio</h1>
     <Slider :ArrayMovies="arrayMovie" />
     <panel-letters :text="movie" :guessedLetters="guessedLetters" />
-    <keyboard
-      :letters="letterArray"
-      @clickedLetter="(id) => letterClicked(id)"
-    />
+    <keyboard :letters="letterArray" @clickedLetter="(id) => letterClicked(id)" />
   </main>
 </template>
 
